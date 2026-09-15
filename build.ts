@@ -48,10 +48,7 @@ async function buildParserWASM(
     if (generate) {
       await exec(`${treeSitterCli} generate`, { cwd });
     }
-    await exec(
-      `${treeSitterCli} build --wasm --output ${outDir}/${name.includes("/") ? name.split("/").pop() : name}.wasm`,
-      { cwd },
-    );
+    await exec(`${treeSitterCli} build --wasm ${cwd}`);
 
     console.log(`✅ Finished building ${label}`);
   } catch (error) {
@@ -78,6 +75,7 @@ if (fs.existsSync(outDir)) {
   fs.rmSync(outDir, { recursive: true, force: true });
 }
 fs.mkdirSync(outDir);
+process.chdir(outDir);
 
 // The CLI downloads the WASI SDK into a shared cache on first use, which corrupts
 // that cache if several builds race for it. So the first build has to run alone.
