@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "lib": ["es2020", "dom"],
-    "module": "commonjs",
+    "module": "nodenext",
     "target": "es2020",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "moduleResolution": "nodenext"
   }
 }

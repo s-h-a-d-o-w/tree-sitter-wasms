@@ -2,17 +2,17 @@ import fs from "fs";
 import os from "os";
 import path from "path";
 import util from "util";
+import { exec as execCallback } from "child_process";
+const exec = util.promisify(execCallback);
 
 import { PromisePool } from "@supercharge/promise-pool";
-const findRoot = require("find-root");
-
-import packageInfo from "./package.json";
+import findRoot from "find-root";
+import packageInfo from "./package.json" with { type: "json" };
 
 const langArg = process.argv[2];
 
-const exec = util.promisify(require("child_process").exec);
 
-const outDir = path.join(__dirname, "out");
+const outDir = path.join(import.meta.dirname, "out");
 
 let hasErrors = false;
 
@@ -27,13 +27,13 @@ async function buildParserWASM(
     try {
       packagePath = findRoot(require.resolve(name));
     } catch (_) {
-      packagePath = path.join(__dirname, "node_modules", name);
+      packagePath = path.join(import.meta.dirname, "node_modules", name);
     }
     const cwd = subPath ? path.join(packagePath, subPath) : packagePath;
     if (generate) {
       await exec(`pnpm tree-sitter generate`, { cwd });
     }
-    await exec(`pnpm tree-sitter build-wasm ${cwd}`);
+    await exec(`pnpm tree-sitter build --wasm --output ${outDir}/${name}.wasm`, { cwd });
     console.log(`✅ Finished building ${label}`);
   } catch (e) {
     console.error(`🔥 Failed to build ${label}:\n`, e);
@@ -75,5 +75,4 @@ PromisePool.withConcurrency(os.cpus().length)
     if (hasErrors) {
       process.exit(1);
     }
-    await exec(`mv *.wasm ${outDir}`, { cwd: __dirname });
   });
