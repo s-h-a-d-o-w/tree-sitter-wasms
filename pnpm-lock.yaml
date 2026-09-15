@@ -236,7 +236,7 @@ importers:
         specifier: ^0.25.0
         version: 0.25.0
       tree-sitter-dart:
-        specifier: github:UserNobody14/tree-sitter-dart
+        specifier: github:UserNobody14/tree-sitter-dart#be07cf7118d3dba06236a3f19541685a68209934
         version: https://codeload.github.com/UserNobody14/tree-sitter-dart/tar.gz/be07cf7118d3dba06236a3f19541685a68209934
       tree-sitter-elisp:
         specifier: ^1.7.2
@@ -311,7 +311,7 @@ importers:
         specifier: ^0.23.2
         version: 0.23.2
       tree-sitter-vue:
-        specifier: https://github.com/tree-sitter-grammars/tree-sitter-vue#ce8011a414fdf8091f4e4071752efc376f4afb08
+        specifier: github:tree-sitter-grammars/tree-sitter-vue#ce8011a414fdf8091f4e4071752efc376f4afb08
         version: https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/ce8011a414fdf8091f4e4071752efc376f4afb08
       tree-sitter-yaml:
         specifier: ^0.5.0
