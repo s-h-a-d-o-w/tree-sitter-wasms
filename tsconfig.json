@@ -5,6 +5,7 @@
     "module": "nodenext",
     "target": "es2020",
     "strict": true,
+    "noEmit": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "moduleResolution": "nodenext"

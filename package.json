@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Prebuilt WASM binaries for tree-sitter's language parsers.",
   "homepage": "https://github.com/s-h-a-d-o-w/tree-sitter-wasms#readme",
-  "main": "bindings/node",
   "files": [
     "/out"
   ],
@@ -70,7 +69,6 @@
     "tree-sitter-typescript": "^0.23.2",
     "tree-sitter-vue": "https://github.com/tree-sitter-grammars/tree-sitter-vue#7e48557b903a9db9c38cea3b7839ef7e1f36c693",
     "tree-sitter-yaml": "^0.5.0",
-    "ts-node": "^10.9.2",
     "typescript": "7.0.2",
     "vitest": "^4.1.9"
   },
