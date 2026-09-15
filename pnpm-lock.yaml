@@ -311,8 +311,8 @@ importers:
         specifier: ^0.23.2
         version: 0.23.2
       tree-sitter-vue:
-        specifier: https://github.com/tree-sitter-grammars/tree-sitter-vue#7e48557b903a9db9c38cea3b7839ef7e1f36c693
-        version: https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/7e48557b903a9db9c38cea3b7839ef7e1f36c693
+        specifier: https://github.com/tree-sitter-grammars/tree-sitter-vue#ce8011a414fdf8091f4e4071752efc376f4afb08
+        version: https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/ce8011a414fdf8091f4e4071752efc376f4afb08
       tree-sitter-yaml:
         specifier: ^0.5.0
         version: 0.5.0
@@ -1736,9 +1736,9 @@ packages:
       tree-sitter:
         optional: true
 
-  tree-sitter-vue@https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/7e48557b903a9db9c38cea3b7839ef7e1f36c693:
-    resolution: {gitHosted: true, integrity: sha512-6yblcNl1gSvQamFfTz3iNWL/hcJe5OQnlxZF8G9UMqTRO76URzgUDM7DkAvBhHHL1R9C5KSh0vQ4PtElEm3Qrg==, tarball: https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/7e48557b903a9db9c38cea3b7839ef7e1f36c693}
-    version: 0.2.1
+  tree-sitter-vue@https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/ce8011a414fdf8091f4e4071752efc376f4afb08:
+    resolution: {gitHosted: true, integrity: sha512-7m/ZQ2LvkUga6EWp2kS6ppXJlzud0PohZw550Y4X4onX6rhlTM8XPzEhMd3M5QSbDvvN7jC76xa02Fb7Mh4a0A==, tarball: https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/ce8011a414fdf8091f4e4071752efc376f4afb08}
+    version: 0.1.0
 
   tree-sitter-yaml@0.5.0:
     resolution: {integrity: sha512-POJ4ZNXXSWIG/W4Rjuyg36MkUD4d769YRUGKRqN+sVaj/VCo6Dh6Pkssn1Rtewd5kybx+jT1BWMyWN0CijXnMA==}
@@ -2855,9 +2855,14 @@ snapshots:
       node-gyp-build: 4.8.4
       tree-sitter-javascript: 0.23.1
 
-  tree-sitter-vue@https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/7e48557b903a9db9c38cea3b7839ef7e1f36c693:
+  tree-sitter-vue@https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/ce8011a414fdf8091f4e4071752efc376f4afb08:
     dependencies:
       nan: 2.28.0
+      node-addon-api: 8.9.2
+      node-gyp-build: 4.8.4
+      tree-sitter-html: 0.23.2
+    transitivePeerDependencies:
+      - tree-sitter
 
   tree-sitter-yaml@0.5.0:
     dependencies:
