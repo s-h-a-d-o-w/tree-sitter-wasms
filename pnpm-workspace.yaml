@@ -1,4 +1,5 @@
 allowBuilds:
+  '@davisvaughan/tree-sitter-r': true
   '@elm-tooling/tree-sitter-elm': true
   '@tlaplus/tree-sitter-tlaplus': true
   '@tree-sitter-grammars/tree-sitter-yaml': true
