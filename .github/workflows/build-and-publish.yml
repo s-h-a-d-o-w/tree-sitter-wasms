@@ -15,4 +15,6 @@ jobs:
           cache: true
           runtime: node@lts
       - run: pnpm build
+      - name: Run tests, etc.
+        run: pnpm concurrently "pnpm test" "pnpm lint" "pnpm typecheck"
       - run: pnpm stage publish --no-git-checks
