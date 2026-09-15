@@ -36,3 +36,5 @@ allowBuilds:
   tree-sitter-vue@https://codeload.github.com/tree-sitter-grammars/tree-sitter-vue/tar.gz/7e48557b903a9db9c38cea3b7839ef7e1f36c693: true
   tree-sitter-yaml: true
   yarn: true
+minimumReleaseAgeExclude:
+  - '@s-h-a-d-o-w/oxlint-config@1.5.0'

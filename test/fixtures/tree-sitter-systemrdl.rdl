@@ -1,0 +1,12 @@
+addrmap demo {
+    name = "Demo";
+
+    reg control_reg {
+        field {
+            sw = rw;
+            hw = r;
+        } enable[0:0] = 0;
+    };
+
+    control_reg control @ 0x0;
+};

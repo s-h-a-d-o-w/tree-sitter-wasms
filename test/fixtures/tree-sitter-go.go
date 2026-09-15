@@ -1,0 +1,17 @@
+package main
+
+import "fmt"
+
+type Greeter struct {
+	Name string
+}
+
+func (g Greeter) Greet() string {
+	return fmt.Sprintf("Hello, %s!", g.Name)
+}
+
+func main() {
+	for _, name := range []string{"world", "go"} {
+		fmt.Println(Greeter{Name: name}.Greet())
+	}
+}

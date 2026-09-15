@@ -1,0 +1,9 @@
+title = "Demo"
+
+[owner]
+name = "world"
+enabled = true
+
+[[servers]]
+host = "127.0.0.1"
+ports = [8000, 8001]

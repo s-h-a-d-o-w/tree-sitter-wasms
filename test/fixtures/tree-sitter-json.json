@@ -1,0 +1,11 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "keywords": ["tree-sitter", "wasm"],
+  "nested": {
+    "enabled": true,
+    "count": 3,
+    "ratio": 1.5,
+    "missing": null
+  }
+}

@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "types": ["node"],
-    "lib": ["es2020", "dom"],
+    "types": ["node", "emscripten"],
+    "lib": ["esnext", "dom"],
     "module": "nodenext",
-    "target": "es2020",
+    "target": "esnext",
     "strict": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "moduleResolution": "nodenext"
-  }
+  },
+  "exclude": ["node_modules", "test/fixtures"]
 }
