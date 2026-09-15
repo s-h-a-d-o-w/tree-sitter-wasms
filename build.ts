@@ -1,9 +1,7 @@
 import { exec as execCallback } from "node:child_process";
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
-import { PromisePool } from "@supercharge/promise-pool";
 import findRoot from "find-root";
 import packageInfo from "./package.json" with { type: "json" };
 
@@ -61,27 +59,33 @@ async function buildParserWASM(
   }
 }
 
+async function buildGrammar(name: string) {
+  if (name === "tree-sitter-rescript") {
+    await buildParserWASM(name, { generate: true });
+  } else if (name === "tree-sitter-ocaml") {
+    await buildParserWASM(name, { subPath: "grammars/ocaml" });
+  } else if (name === "tree-sitter-php") {
+    await buildParserWASM(name, { subPath: "php" });
+  } else if (name === "tree-sitter-typescript") {
+    await buildParserWASM(name, { subPath: "typescript" });
+    await buildParserWASM(name, { subPath: "tsx" });
+  } else {
+    await buildParserWASM(name);
+  }
+}
+
 if (fs.existsSync(outDir)) {
   fs.rmSync(outDir, { recursive: true, force: true });
 }
 fs.mkdirSync(outDir);
 
-await PromisePool.withConcurrency(os.cpus().length)
-  .for(grammars)
-  .process(async (name) => {
-    if (name === "tree-sitter-rescript") {
-      await buildParserWASM(name, { generate: true });
-    } else if (name === "tree-sitter-ocaml") {
-      await buildParserWASM(name, { subPath: "grammars/ocaml" });
-    } else if (name === "tree-sitter-php") {
-      await buildParserWASM(name, { subPath: "php" });
-    } else if (name === "tree-sitter-typescript") {
-      await buildParserWASM(name, { subPath: "typescript" });
-      await buildParserWASM(name, { subPath: "tsx" });
-    } else {
-      await buildParserWASM(name);
-    }
-  });
+// The CLI downloads the WASI SDK into a shared cache on first use, which corrupts
+// that cache if several builds race for it. So the first build has to run alone.
+const [firstGrammar, ...remainingGrammars] = grammars;
+if (firstGrammar) {
+  await buildGrammar(firstGrammar);
+}
+await Promise.all(remainingGrammars.map((grammar) => buildGrammar(grammar)));
 
 if (failures.length > 0) {
   failures.forEach(([label, error]) => {

@@ -175,9 +175,6 @@ importers:
       '@s-h-a-d-o-w/oxlint-config':
         specifier: ^1.6.0
         version: 1.6.0(oxfmt@0.67.0)(oxlint-tsgolint@7.0.2001)(oxlint@1.82.0(oxlint-tsgolint@7.0.2001))
-      '@supercharge/promise-pool':
-        specifier: ^3.3.0
-        version: 3.3.0
       '@tlaplus/tree-sitter-tlaplus':
         specifier: ^1.5.0
         version: 1.5.0(tree-sitter-cli@0.27.0)
@@ -980,10 +977,6 @@ packages:
       oxfmt: '*'
       oxlint: '*'
       oxlint-tsgolint: '*'
-
-  '@supercharge/promise-pool@3.3.0':
-    resolution: {integrity: sha512-qGzCltMN05ohRRQAXB8TPWt+0Coz9Va266gr9nYN1qc/f/EIaup3VRg7b59mtRaeKTRcxreF20l/udCM/gOqNg==}
-    engines: {node: '>=8'}
 
   '@tlaplus/tree-sitter-tlaplus@1.5.0':
     resolution: {integrity: sha512-racRCBwSDSm+7PNUnsrTaMq1CAfBQLjoIS6SJtyxr8Ko9aq4gncgB9ILk7ZDatndN0r+9Hk0QzTeS8kioXgr8A==}
@@ -2254,8 +2247,6 @@ snapshots:
       oxfmt: 0.67.0
       oxlint: 1.82.0(oxlint-tsgolint@7.0.2001)
       oxlint-tsgolint: 7.0.2001
-
-  '@supercharge/promise-pool@3.3.0': {}
 
   '@tlaplus/tree-sitter-tlaplus@1.5.0(tree-sitter-cli@0.27.0)':
     dependencies:
