@@ -17,6 +17,7 @@ const grammars = [
   ...Object.keys(packageInfo.devDependencies).filter(
     (n) => n.startsWith("tree-sitter-") && n !== "tree-sitter-cli",
   ),
+  "@elm-tooling/tree-sitter-elm",
   "@tree-sitter-grammars/tree-sitter-zig",
   "@tlaplus/tree-sitter-tlaplus",
   "@willjouo/tree-sitter-r",
@@ -27,22 +28,25 @@ async function buildParserWASM(
   { subPath, generate }: { subPath?: string; generate?: boolean } = {},
 ) {
   const label = subPath ? path.join(name, subPath) : name;
+  console.log(`⏳ Building ${label}`);
+
   try {
-    console.log(`⏳ Building ${label}`);
     let packagePath;
     try {
       packagePath = findRoot(require.resolve(name));
     } catch {
       packagePath = path.join(import.meta.dirname, "node_modules", name);
     }
+
     const cwd = subPath ? path.join(packagePath, subPath) : packagePath;
     if (generate) {
       await exec(`pnpm tree-sitter generate`, { cwd });
     }
     await exec(
-      `pnpm tree-sitter build --wasm --output ${outDir}/${name}.wasm`,
+      `pnpm tree-sitter build --wasm --output ${outDir}/${name.includes("/") ? name.split("/").pop() : name}.wasm`,
       { cwd },
     );
+
     console.log(`✅ Finished building ${label}`);
   } catch (error) {
     failures.push([label, error]);
@@ -53,7 +57,6 @@ if (fs.existsSync(outDir)) {
   fs.rmSync(outDir, { recursive: true, force: true });
 }
 fs.mkdirSync(outDir);
-process.chdir(outDir);
 
 await PromisePool.withConcurrency(os.cpus().length)
   .for(grammars)
