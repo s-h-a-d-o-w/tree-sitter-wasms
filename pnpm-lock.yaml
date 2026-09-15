@@ -296,8 +296,8 @@ importers:
         specifier: ^0.24.0
         version: 0.24.0
       tree-sitter-solidity:
-        specifier: github:JoranHonig/tree-sitter-solidity#b239a95f94cfcc6e7b3e961bc73a28d55e214f02
-        version: https://codeload.github.com/JoranHonig/tree-sitter-solidity/tar.gz/b239a95f94cfcc6e7b3e961bc73a28d55e214f02
+        specifier: ^1.2.13
+        version: 1.2.13
       tree-sitter-swift:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1704,9 +1704,14 @@ packages:
       tree-sitter:
         optional: true
 
-  tree-sitter-solidity@https://codeload.github.com/JoranHonig/tree-sitter-solidity/tar.gz/b239a95f94cfcc6e7b3e961bc73a28d55e214f02:
-    resolution: {gitHosted: true, integrity: sha512-koD1hmoNtHeCML8Wes2HoxQMWJEaLm6NO7tWBv/yr2ELYbGHq3tlDHKh6gyQb0Kq5ANWAojBfG491kB1Jd+TxQ==, tarball: https://codeload.github.com/JoranHonig/tree-sitter-solidity/tar.gz/b239a95f94cfcc6e7b3e961bc73a28d55e214f02}
-    version: 1.2.0
+  tree-sitter-solidity@1.2.13:
+    resolution: {integrity: sha512-nO2AbcAuz2Qba8JnPNe/3FVjRRvGY3ApxSJ8UPIzfynJm4PYCMbBoXxxbprvMgjCbGYR/ZrHGIPKzXV7zBa+lQ==}
+    peerDependencies:
+      tree-sitter: ^0.25.0
+      tree_sitter: '*'
+    peerDependenciesMeta:
+      tree_sitter:
+        optional: true
 
   tree-sitter-swift@0.7.1:
     resolution: {integrity: sha512-pneKVTuGamaBsqqqfB9BvNQjktzh/0IVPR54jLB5Fq/JTDQwYHd0Wo6pVyZ5jAYpbztzq+rJ/rpL9ruxTmSoKw==}
@@ -2823,9 +2828,10 @@ snapshots:
       node-addon-api: 8.9.2
       node-gyp-build: 4.8.4
 
-  tree-sitter-solidity@https://codeload.github.com/JoranHonig/tree-sitter-solidity/tar.gz/b239a95f94cfcc6e7b3e961bc73a28d55e214f02:
+  tree-sitter-solidity@1.2.13:
     dependencies:
-      nan: 2.28.0
+      node-addon-api: 8.9.2
+      node-gyp-build: 4.8.4
       yarn: 1.22.22
 
   tree-sitter-swift@0.7.1:

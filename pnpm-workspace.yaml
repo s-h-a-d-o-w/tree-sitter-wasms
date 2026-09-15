@@ -30,6 +30,7 @@ allowBuilds:
   tree-sitter-ruby: true
   tree-sitter-rust: true
   tree-sitter-scala: true
+  tree-sitter-solidity: true
   tree-sitter-solidity@https://codeload.github.com/JoranHonig/tree-sitter-solidity/tar.gz/b239a95f94cfcc6e7b3e961bc73a28d55e214f02: true
   tree-sitter-swift: true
   tree-sitter-systemrdl: true
