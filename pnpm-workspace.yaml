@@ -1,6 +1,7 @@
 allowBuilds:
   '@elm-tooling/tree-sitter-elm': true
   '@tlaplus/tree-sitter-tlaplus': true
+  '@tree-sitter-grammars/tree-sitter-yaml': true
   '@tree-sitter-grammars/tree-sitter-zig': true
   '@willjouo/tree-sitter-r': true
   tree-sitter-bash: true

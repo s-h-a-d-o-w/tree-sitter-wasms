@@ -18,8 +18,9 @@ const grammars = [
     (n) => n.startsWith("tree-sitter-") && n !== "tree-sitter-cli",
   ),
   "@elm-tooling/tree-sitter-elm",
-  "@tree-sitter-grammars/tree-sitter-zig",
   "@tlaplus/tree-sitter-tlaplus",
+  "@tree-sitter-grammars/tree-sitter-yaml",
+  "@tree-sitter-grammars/tree-sitter-zig",
   "@willjouo/tree-sitter-r",
 ].filter((s) => !langArg || s === langArg);
 // Not `pnpm tree-sitter` because that can resolve to the `tree-sitter` within some grammar packages.
