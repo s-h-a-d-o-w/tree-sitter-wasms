@@ -3,6 +3,11 @@ import path from "node:path";
 import { Worker } from "node:worker_threads";
 import { describe, expect, it } from "vitest";
 
+export type WorkerData = {
+  fixturePath: string;
+  wasmPath: string;
+};
+
 const outDir = path.join(import.meta.dirname, "..", "out");
 const fixturesDir = path.join(import.meta.dirname, "fixtures");
 const workerUrl = new URL("parsers.worker.ts", import.meta.url);
@@ -20,7 +25,7 @@ function parseFixture(wasmPath: string, fixturePath: string) {
     // Each parser runs in its own worker because a wasm that fails to load leaves the
     // shared emscripten instance unusable for every parser loaded afterwards.
     const worker = new Worker(workerUrl, {
-      workerData: { fixturePath, wasmPath },
+      workerData: { fixturePath, wasmPath } satisfies WorkerData,
     });
 
     worker.on("message", (message: { hasError: boolean }) => {
@@ -40,7 +45,7 @@ describe("built parsers", () => {
     expect(wasmFiles.length).toBeGreaterThan(0);
   });
 
-  it.each<string>(wasmFiles)("%s parses its fixture", async (wasmFile) => {
+  it.each(wasmFiles)("%s parses its fixture", async (wasmFile) => {
     const grammar = path.parse(wasmFile).name;
     const fixture = fixturesByGrammar.get(grammar);
     if (!fixture) {

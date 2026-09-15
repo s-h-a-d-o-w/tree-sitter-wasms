@@ -1,11 +1,9 @@
 import fs from "node:fs/promises";
 import { parentPort, workerData } from "node:worker_threads";
 import { Language, Parser } from "web-tree-sitter";
+import type { WorkerData } from "./parsers.test.js";
 
-const { fixturePath, wasmPath } = workerData as {
-  fixturePath: string;
-  wasmPath: string;
-};
+const { fixturePath, wasmPath } = workerData as WorkerData;
 
 await Parser.init();
 
