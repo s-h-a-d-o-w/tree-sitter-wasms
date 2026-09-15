@@ -1,8 +1,8 @@
-import fs from "fs";
-import os from "os";
-import path from "path";
-import util from "util";
-import { exec as execCallback } from "child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import util from "node:util";
+import { exec as execCallback } from "node:child_process";
 const exec = util.promisify(execCallback);
 
 import { PromisePool } from "@supercharge/promise-pool";
@@ -10,8 +10,6 @@ import findRoot from "find-root";
 import packageInfo from "./package.json" with { type: "json" };
 
 const langArg = process.argv[2];
-
-
 const outDir = path.join(import.meta.dirname, "out");
 
 let hasErrors = false;

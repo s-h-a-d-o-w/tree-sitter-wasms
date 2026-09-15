@@ -1,15 +1,28 @@
 {
-  "name": "tree-sitter-wasms",
-  "version": "0.1.13",
+  "name": "@s-h-a-d-o-w/tree-sitter-wasms",
+  "version": "1.0.0",
   "description": "Prebuilt WASM binaries for tree-sitter's language parsers.",
-  "repository": "https://github.com/Gregoor/tree-sitter-wasms",
-  "author": "Gregor <gregorwbr@gmail.com>, Menci <huanghaorui301@gmail.com>",
+  "homepage": "https://github.com/s-h-a-d-o-w/tree-sitter-wasms#readme",
+  "main": "bindings/node",
+  "files": [
+    "/out"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-h-a-d-o-w/tree-sitter-wasms.git"
+  },
   "license": "Unlicense",
   "type": "module",
   "scripts": {
-    "build": "node build.ts"
+    "build": "node build.ts",
+    "format": "oxfmt",
+    "lint": "oxlint",
+    "test": "vitest",
+    "prepare": "husky",
+    "typecheck": "tsc "
   },
   "devDependencies": {
+    "@s-h-a-d-o-w/oxlint-config": "^1.1.2",
     "@supercharge/promise-pool": "^3.3.0",
     "@tlaplus/tree-sitter-tlaplus": "^1.5.0",
     "@tree-sitter-grammars/tree-sitter-zig": "^1.1.2",
@@ -17,6 +30,12 @@
     "@types/node": "^26.5.1",
     "@willjouo/tree-sitter-r": "^0.0.1",
     "find-root": "^1.1.0",
+    "husky": "^9.1.7",
+    "knip": "^6.32.0",
+    "lint-staged": "^17.0.8",
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.76.0",
+    "oxlint-tsgolint": "^7.0.2001",
     "tree-sitter-bash": "^0.25.1",
     "tree-sitter-c": "^0.24.1",
     "tree-sitter-c-sharp": "^0.23.5",
@@ -52,11 +71,8 @@
     "tree-sitter-vue": "https://github.com/tree-sitter-grammars/tree-sitter-vue#7e48557b903a9db9c38cea3b7839ef7e1f36c693",
     "tree-sitter-yaml": "^0.5.0",
     "ts-node": "^10.9.2",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "vitest": "^4.1.9"
   },
-  "files": [
-    "/out"
-  ],
-  "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c",
-  "main": "bindings/node"
+  "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c"
 }
