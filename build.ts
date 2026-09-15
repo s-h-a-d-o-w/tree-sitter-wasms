@@ -22,6 +22,13 @@ const grammars = [
   "@tlaplus/tree-sitter-tlaplus",
   "@willjouo/tree-sitter-r",
 ].filter((s) => !langArg || s === langArg);
+// Not `pnpm tree-sitter` because that can resolve to the `tree-sitter` within some grammar packages.
+const treeSitterCli = path.join(
+  import.meta.dirname,
+  "node_modules",
+  ".bin",
+  "tree-sitter",
+);
 
 async function buildParserWASM(
   name: string,
@@ -40,10 +47,10 @@ async function buildParserWASM(
 
     const cwd = subPath ? path.join(packagePath, subPath) : packagePath;
     if (generate) {
-      await exec(`pnpm tree-sitter generate`, { cwd });
+      await exec(`${treeSitterCli} generate`, { cwd });
     }
     await exec(
-      `pnpm tree-sitter build --wasm --output ${outDir}/${name.includes("/") ? name.split("/").pop() : name}.wasm`,
+      `${treeSitterCli} build --wasm --output ${outDir}/${name.includes("/") ? name.split("/").pop() : name}.wasm`,
       { cwd },
     );
 
